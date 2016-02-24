@@ -1,0 +1,191 @@
+@font-face{
+	font-family: Open Sans;
+	src: url('../FONTS/OpenSans-Regular.ttf');
+}
+
+@font-face{
+	font-family: Open Sans Semibold;
+	src: url('../FONTS/OpenSans-Semibold.ttf');
+}
+
+@font-face{
+	font-family: Open Sans Light;
+	src: url('../FONTS/OpenSans-Light.ttf');
+}
+
+body{
+	margin: 0 auto;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#87e0fd+0,53cbf1+40,05abe0+100;Blue+3D+%23+16 */
+background: #87e0fd; /* Old browsers */
+background: -moz-linear-gradient(left, #87e0fd 0%, #53cbf1 40%, #05abe0 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=1 ); /* IE6-9 */
+	background: #e67e22;
+}
+
+.hidden{
+	display: none;
+}
+
+.show{
+	display: block;
+}
+
+section{
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: 800px;
+	height: 600px;
+	background: #e67e22;
+}
+	
+	section.title{
+		background: #8e44ad;
+	}
+
+	section.title h1{
+		text-align: center;
+		margin-top: 50px;
+		font-family: 'Open Sans Semibold';
+		color: #fff;
+	}
+
+	section.title div.author{
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+		font-family: 'Open Sans Light';
+		color: #fff;
+	}
+
+		section.title div.author span.por{
+			margin-bottom: 20px;
+		}
+
+		section.title div.author h3.author{
+			text-align: center;
+			margin: 0px;
+		}
+
+		section.title div.author div.line{
+			width: 50px;
+			border-top: 1px solid;
+			border-color: #9b59b6;
+			display: inline-block;
+			
+		}
+
+	section.fluxograma{
+		
+	}
+
+		section.fluxograma div.fluxograma{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width: 700px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+		}
+
+			section.fluxograma div.fluxograma div.square{
+				text-align: center;
+				width: 140px;
+				height: 80px;
+				background-color: #f39c12;
+				font-family: 'Open Sans';
+				color: white;
+				padding: 5px;
+				line-height: 80px;
+  				text-align: center;
+				border-radius: 15px;
+			}
+
+				section.fluxograma div.fluxograma div.square span{
+					display: inline-block;
+					vertical-align: middle;
+					line-height: normal;    
+				}
+
+			section.fluxograma div.fluxograma div.respostas{
+				display: flex;
+				flex-direction: column;
+				height: 200px;
+				justify-content: space-between;
+			}
+			
+			section.fluxograma div.fluxograma div.arrows-wrapper{
+				width: 26px;
+				height: 150px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+
+				section.fluxograma div.fluxograma div.arrows-wrapper div.arrow:first-child{
+					transform: rotate(-45deg);
+				}
+
+				section.fluxograma div.fluxograma div.arrows-wrapper div.arrow:last-child{
+					transform: rotate(45deg);
+				}
+
+			section.fluxograma div.fluxograma div.arrow{
+				width: 26px;
+				border-top: 1px solid;
+				position: relative;
+				color: #d35400;
+			}
+
+				section.fluxograma div.fluxograma div.arrow::after{
+					content: "";
+					top: -4px;
+					position: absolute;
+					right: 0px;
+					width: 6px;
+					height: 6px;
+					border-width: 1px 1px 0px 0px;
+					/*border: 1px solid;*/
+					border-style: solid;
+					color: #d35400;
+					transform: rotate(45deg);
+				}
+
+	section.documento{
+		height: 100%;
+	}
+
+		section.documento img{
+			position: absolute;
+			width: 750px;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 0px;
+		}
+
+	section.iot{
+		background: #2ecc71;
+	}
+
+		section.iot h1{
+			font-family: 'Open Sans';
+			text-align: center;
+			font-size: 156pt;
+			padding: 0px;
+			margin: 0px;
+			line-height: 600px;
+			color: white;
+			letter-spacing: 6px;
+		}
+
+	

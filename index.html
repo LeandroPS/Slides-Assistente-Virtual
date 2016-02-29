@@ -6,52 +6,143 @@
 		<title></title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="CSS/animate.css">
 		<link rel="stylesheet" href="CSS/style.css">
 		<script src="JS/jquery.js"></script>
 		<script src="JS/js.js"></script>
 	</head>
 	<body>
+		<!--
 		<section class="title show">
-			<h1>A arquiteura de uma Assistente Virtual Modular</h1>
-			<div class="author">
+			<h1 class="next">A arquiteura de uma Assistente Virtual Modular</h1>
+			<div class="author next">
 				<span class="por">por</span>
 				<h3 class="author">Leandro Pires de Souza</h3>
 				<div class="line"></div>
 			</div>
+			<div class="next unico" data-out-class="out" data-execute="changeColor" data-end></div>
 		</section>
-		<section class="fluxograma">
-			<!--<h1>Fluxograma</h1>-->
+		<section class="fluxograma show">
 			<div class="fluxograma">
-				<div class="square next"><span>Reconhecimento de voz</span></div>
-				<div class="arrow"></div>
-				<div class="square next"><span>Análise linguística</span></div>
-				<div class="arrow"></div>
-				<div class="square next"><span>Módulo</span></div>
+				<div class="square next" data-out-class="bounceOut" data-keep-class="true" data-add-class="animated bounceIn"><span>Reconhecimento de voz</span></div>
 				<div class="arrows-wrapper">
-					<div class="arrow"></div>
-					<div class="arrow"></div>
+					<div class="arrow linguistica"></div>
 				</div>
-				<div class="next respostas">
-					<div class="square"><span>Resposta em audio</span></div>
-					<div class="square"><span>Resposta gráfica</span></div>
+				<div class="square next" data-out-class="bounceOut" data-keep-class="true" data-add-class="animated bounceIn" data-too="div.arrow.linguistica"><span>Análise linguística</span></div>
+				<div class="arrows-wrapper">
+					<div class="arrow modulo"></div>
+				</div>
+				<div class="square next" data-out-class="bounceOut" data-keep-class="true" data-add-class="animated bounceIn" data-too="div.arrow.modulo"><span>Módulo</span></div>
+				<div class="arrows-wrapper turn">
+					<div class="arrow audio"></div>
+					<div class="arrow grafica"></div>
+				</div>
+				<div class="respostas">
+					<div class="square next" data-out-class="bounceOut" data-keep-class="true" data-add-class="animated bounceIn" data-too="div.arrow.audio"><span>Resposta em audio</span></div>
+					<div class="square next" data-out-class="bounceOut" data-keep-class="true" data-add-class="animated bounceIn" data-too="div.arrow.grafica"><span>Resposta gráfica</span></div>
 				</div>
 
 			</div>
+			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
-		<section class="iot show">
-			<h1>IoT?</h1>	
+		<section class="iot">
+			<h1 class="next">IoT?</h1>
+			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
 		<section class="documento">
-			<img src="IMAGES/documento.png">
+			<img src="IMAGES/documento.png" class="next">
+			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
 		<section class="lista">
 			<ul>
-				<li>Análise morfológica</li>
-				<li>Análise sintática</li>
-				<li>Análise fonética</li>
-				<li>Análise semântica</li>
-				<li>Análise pragmática</li>
+				<li class="next">Análise morfológica</li>
+				<li class="next">Análise sintática</li>
+				<li class="next">Análise fonética</li>
+				<li class="next">Análise semântica</li>
+				<li class="next">Análise pragmática</li>
 			</ul>
+			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
+		-->
+		<section class="morfologica next">
+			<h1>Análise Morfológica</h1>
+			
+			<div class="next">
+				<span class="artigo pos-1">A</span> 
+				<span class="substantivo pos-2">manhã</span> 
+				<span class="verbo pos-3">está</span> 
+				<span class="adjetivo pos-4">ensolarada</span>
+			</div>
+			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		<section class="sintatica next">
+			<h1>Análise Sintática</h1>
+			
+			<div>
+				<span class="sujeito-composto">
+					<span class="pos-1">Marcos</span> 
+					<span class="pos-2">e</span> 
+					<span class="pos-3">Paulo</span>
+				</span> 
+				<span class="predicado-verbal">
+					<span class="pos-4">gostam</span> 
+					<span class="objeto-indireto">
+						<span class="pos-5">de</span> 
+						<span class="pos-6">estudar</span>
+					</span> 
+					<span class="adjunto-adverbial">
+						<span class="pos-7">todos</span> 
+						<span class="pos-8">os</span> 
+						<span class="pos-9">dias</span>
+					</span>
+				</span>
+			</div>
+			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		<section class="fonetica next">
+			<h1>Análise Fonética</h1>
+			
+			<div>
+				<span class="pos-1">-</span> 
+				<span class="pos-2">Você</span> 
+				<span class="pos-3">sabe</span> 
+				<span class="pos-4">que</span> 
+				<span class="pos-5">horas</span> 
+				<span class="pos-6">são?</span>
+			</div>
+			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		<section class="semantica next">
+			<h1>Análise Semântica</h1>
+			
+			<div class="next">
+				<span class="pos-1">O</span> 
+				<span class="pos-2">senhor</span> 
+				<span class="pos-3">sentou</span> 
+				<span class="pos-4">se</span> 
+				<span class="pos-5">no</span> 
+				<span class="diferente pos-6">banco</span>
+			</div>
+			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		<section class="pragmatica next">
+			<h1>Análise Pragmática</h1>
+			
+			<div>
+				<span class="pos-1">-</span> 
+				<span class="pos-2">Você</span> 
+				<span class="pos-3">sabe</span> 
+				<span class="pos-4">que</span> 
+				<span class="pos-5">horas</span> 
+				<span class="pos-6">são?</span>
+			</div>
+			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		
 	</body>
 </html>

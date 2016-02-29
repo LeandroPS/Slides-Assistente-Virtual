@@ -22,7 +22,11 @@ background: -moz-linear-gradient(left, #87e0fd 0%, #53cbf1 40%, #05abe0 100%); /
 background: -webkit-linear-gradient(left, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to right, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=1 ); /* IE6-9 */
-	background: #e67e22;
+	background: #8e44ad;
+	
+	overflow: hidden;
+	
+	transition: background 1s;
 }
 
 .hidden{
@@ -34,18 +38,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 }
 
 section{
-	display: none;
+	display: block;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	width: 800px;
 	height: 600px;
-	background: #e67e22;
 }
 	
 	section.title{
-		background: #8e44ad;
+		
 	}
 
 	section.title h1{
@@ -53,7 +56,15 @@ section{
 		margin-top: 50px;
 		font-family: 'Open Sans Semibold';
 		color: #fff;
+		opacity: 0;
+		transform: translateY(-50px);
+		transition: all 1s;
 	}
+
+		section.title h1.current{
+			opacity: 1;
+			transform: translateY(0px);
+		}
 
 	section.title div.author{
 		position: absolute;
@@ -67,20 +78,39 @@ section{
 
 		section.title div.author span.por{
 			margin-bottom: 20px;
+			opacity: 0;
+			transition: all 1s;
 		}
+
+			section.title div.author.current span.por{
+				opacity: 1;
+			}
 
 		section.title div.author h3.author{
 			text-align: center;
 			margin: 0px;
+			opacity: 0;
+			transform: translateY(50px);
+			transition: all 1s;
 		}
 
+			section.title div.author.current h3.author{
+				opacity: 1;
+				transform: translateY(0px);
+			}
+
 		section.title div.author div.line{
-			width: 50px;
+			width: 0px;
 			border-top: 1px solid;
 			border-color: #9b59b6;
 			display: inline-block;
 			
+			transition: width 1s 1s;
 		}
+
+			section.title div.author.current div.line{
+				width: 100px;
+			}
 
 	section.fluxograma{
 		
@@ -109,12 +139,17 @@ section{
 				line-height: 80px;
   				text-align: center;
 				border-radius: 15px;
+				opacity: 0;
 			}
+
+				section.fluxograma div.fluxograma div.square.current{
+					opacity: 1;
+				}
 
 				section.fluxograma div.fluxograma div.square span{
 					display: inline-block;
 					vertical-align: middle;
-					line-height: normal;    
+					line-height: normal;
 				}
 
 			section.fluxograma div.fluxograma div.respostas{
@@ -132,20 +167,29 @@ section{
 				justify-content: space-around;
 			}
 
-				section.fluxograma div.fluxograma div.arrows-wrapper div.arrow:first-child{
+				section.fluxograma div.fluxograma div.arrows-wrapper.turn div.arrow:first-child{
 					transform: rotate(-45deg);
 				}
 
-				section.fluxograma div.fluxograma div.arrows-wrapper div.arrow:last-child{
+				section.fluxograma div.fluxograma div.arrows-wrapper.turn div.arrow:last-child{
 					transform: rotate(45deg);
 				}
 
 			section.fluxograma div.fluxograma div.arrow{
-				width: 26px;
+				width: 0px;
 				border-top: 1px solid;
 				position: relative;
 				color: #d35400;
+				opacity: 0;
+				
+				transition: all 1s;
 			}
+
+				section.fluxograma div.fluxograma div.arrow.current{
+					opacity: 1;
+					width: 26px;
+					transition: all 1s;
+				}
 
 				section.fluxograma div.fluxograma div.arrow::after{
 					content: "";
@@ -170,11 +214,17 @@ section{
 			width: 750px;
 			left: 50%;
 			transform: translateX(-50%);
-			bottom: 0px;
+			bottom: -600px;
+			transition: bottom 1.5s linear;
 		}
 
+			section.documento img.current{
+				transition: bottom 1.5s linear;
+				bottom: 0px
+			}
+
 	section.iot{
-		background: #2ecc71;
+
 	}
 
 		section.iot h1{
@@ -186,6 +236,223 @@ section{
 			line-height: 600px;
 			color: white;
 			letter-spacing: 6px;
+			display: none;
 		}
 
+
+			section.iot h1.current{
+				display: block;
+			}
+
+	section.lista{
+		
+	}
+
+		section.lista ul{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			padding: 0px;
+			margin: 0px;
+			transform: translateX(-50%) translateY(-50%);
+			
+			font-family: 'Open Sans';
+			color: #fff;
+		}
+
+			section.lista ul li{
+				transform: translateY(20px);
+				opacity: 0;
+				transition: all 1s;
+				list-style: none;
+			}
+
+			section.lista ul li.current{
+				display: block;
+				transform: translateY(0px);
+				opacity: 1;
+				transition: all 1s;
+			}
 	
+	section.morfologica{
+		
+	}
+
+		section.morfologica h1, 
+		section.pragmatica h1, 
+		section.semantica h1, 
+		section.fonetica h1, 
+		section.sintatica h1{
+			text-align: center;
+			font-family: Open Sans;
+			font-size: 3em;
+			color: #fff;
+			
+			opacity: 0;
+			transition: all 1s;
+		}
+
+			section.fonetica.current h1, 							section.pragmatica.current h1,
+			section.semantica.current h1,
+			section.morfologica.current h1,
+			section.sintatica.current h1{
+				opacity: 1;
+				
+				transition: all 1s;
+			}
+
+		section.fonetica div, 									section.pragmatica div,
+		section.semantica div,
+		section.morfologica div,
+		section.sintatica div{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			
+			opacity: 0;
+			
+		}
+
+			section.fonetica.current div,
+			section.pragmatica.current div,
+			section.semantica.current div,
+			section.morfologica.current div,
+			section.sintatica.current div{
+				opacity: 1;
+			}
+
+
+			section.fonetica div.current,
+			section.pragmatica div.current,
+			section.semantica div.current,
+			section.morfologica div.current,
+			section.sintatica div.current{
+
+				opacity: 1;
+			}
+
+			section span.pos-1, 
+			section span.pos-2, 
+			section span.pos-3, 
+			section span.pos-4, 
+			section span.pos-5,
+			section span.pos-6,
+			section span.pos-7,
+			section span.pos-8,
+			section span.pos-9{
+				display: inline-block;
+				opacity: 0;
+				transform: translateY(-20px);
+				color: #fff;
+				font-family: Open Sans Light;
+				
+				transition: all 1s;
+			}
+
+			section.current span.pos-1, 
+			section.current span.pos-2, 
+			section.current span.pos-3, 
+			section.current span.pos-4, 
+			section.current span.pos-5,
+			section.current span.pos-6,
+			section.current span.pos-7,
+			section.current span.pos-8,
+			section.current span.pos-9{
+				opacity: 0.8;
+				transform: translateY(0px);
+
+				transition-property: all;
+				transition-duration: 1s;
+			}
+
+			section span.pos-1{
+				transition-delay: 0.5s;
+			}
+
+			section span.pos-2{
+				transition-delay: 1s;
+			}
+
+			section span.pos-3{
+				transition-delay: 1.5s;
+			}
+
+			section span.pos-4{
+				transition-delay: 2s;
+			}
+
+			section span.pos-5{
+				transition-delay: 2.5s;
+			}
+
+			section span.pos-6{
+				transition-delay: 3s;
+			}
+	
+			section span.pos-7{
+				transition-delay: 3.5s;
+			}
+
+			section span.pos-8{
+				transition-delay: 4s;
+			}
+
+			section span.pos-9{
+				transition-delay: 4.5s;
+			}
+
+		section div.current span.artigo,
+		section div.current span.substantivo,
+		section div.current span.verbo,
+		section div.current span.adjetivo,
+		section div.current span.sujeito-composto,
+		section div.current span.predicado-verbal,
+		section div.current span.objeto-indireto,
+		section div.current span.adjunto-adverbial{
+			padding: 0px 7px;
+			border-radius: 4px;
+			
+		}
+
+		section div.current span.artigo{
+			background-color: red;
+		}
+
+		section div.current span.substantivo{
+			background-color: green;
+		}
+
+		section div.current span.verbo{
+			background-color: blue;
+		}
+
+		section div.current span.adjetivo{
+			background-color: grey;
+		}
+
+
+		section div.current span.sujeito-composto{
+			background-color: ;
+		}
+
+		section div.current span.predicado-verbal{
+			background-color: ;
+		}
+
+		section div.current span.objeto-indireto{
+			background-color: ;
+		}
+
+		section div.current span.adjunto-adverbial{
+			background-color: ;
+		}
+
+		
+		section div.current span.diferente{
+			transition-delay: 0s;
+			opacity: 0.5;
+			color: #bdc3c7;
+		}
+
+			

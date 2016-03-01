@@ -133,13 +133,22 @@ $(function(){
 	});
 	
 	if (annyang) {
-	  // Let's define a command.
-	  var commands = {
-		'hello': function() { alert('Hello world!'); }
-	  };
+	  // Let's define a command.	
+		annyang.setLanguage("pt-BR");
+		recognition.language("pt-BR");
+		
+		var commands = {
+			'olá': 
+				function() { 
+					alert('olá brasil!'); 
+				},
+			'hello': function() { 
+					alert('Hello world!'); 
+				}
+		};
 
-	  // Add our commands to annyang
-	  annyang.addCommands(commands);
+		// Add our commands to annyang
+		annyang.addCommands(commands);
 	}
 	
 	$("button.mic").click(function(){

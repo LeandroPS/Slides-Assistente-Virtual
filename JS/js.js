@@ -115,8 +115,8 @@ function next(){
 }
 
 var cores = ["#8e44ad", "#e67e22", "#2ecc71", "#e74c3c", "#3498db", "#F44336", "#E91E63", "#3F51B5", "#00BCD4", "#607D8B"];
-var i = 0;
-//var i = 8;
+//var i = 0;
+var i = 8;
 
 function changeColor(){
 	$("body").css("background", cores[i]);
@@ -130,5 +130,19 @@ $(function(){
 		if(e.which == 13){
 			next();	
 		}
+	});
+	
+	if (annyang) {
+	  // Let's define a command.
+	  var commands = {
+		'hello': function() { alert('Hello world!'); }
+	  };
+
+	  // Add our commands to annyang
+	  annyang.addCommands(commands);
+	}
+	
+	$("button.mic").click(function(){
+		annyang.start();
 	});
 });

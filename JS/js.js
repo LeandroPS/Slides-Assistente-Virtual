@@ -147,7 +147,11 @@ $(function(){
 				},
 			'hello': function() { 
 					alert('Hello world!'); 
-				}
+				},
+			
+			'(quero) ouvir *tag': function(artista){
+				alert(artista);
+			}
 		};
 
 		// Add our commands to annyang

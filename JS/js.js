@@ -123,6 +123,37 @@ function changeColor(){
 	i++;
 }
 
+function dismiss(){
+	$("button.mic, div.speech").addClass("dismiss");
+	$("button.cancel").addClass("show");
+}
+
+function spotify(musica){
+	/*
+	<div class="spotify">
+				<span class="spotify-title"><i class="fa fa-spotify"></i> Spotify</span>
+				<span class="artist">The Beatles</span>
+				<span class="track">Hey Jude</span>
+				<div class="album-cover"></div>
+				<div class="controles">
+					<button class="back">
+						<i class="fa fa-step-backward fa-2x"></i>
+					</button>
+					<button class="play-pause">
+						<i class="fa fa-play fa-2x"></i></button>
+					<button class="forward">
+						<i class="fa fa-step-forward fa-2x"></i>
+					</button>
+				</div>
+			</div>
+	*/
+	$("div.album-cover").css("background-image","url("+musica["imagem"]+")");
+	$("span.artist").text(musica["artista"]);
+	$("span.track").text(musica["track"]);
+	$("div.spotify").addClass("show");
+	$("audio").attr("src", musica["preview"]).trigger("play");
+}
+
 $(function(){
 	changeColor();
 	$("body").keypress(function(e){
@@ -145,17 +176,34 @@ $(function(){
 				function() { 
 					alert('olá brasil!'); 
 				},
-			'hello': function() { 
-					alert('Hello world!'); 
+			'cancele': function() { 
+					$("button.cancel").trigger("click"); 
+				},
+			'cancelar': function() { 
+					$("button.cancel").trigger("click"); 
 				},
 			
 			'(quero) ouvir *tag': function(artista){
-				alert(artista);
+				var musica = [];
 				$.get("https://api.spotify.com/v1/search",{q: artista, type:"artist"}, function(data){
 					//data = JSON.parse(data);
 					console.log(data);
-					console.log(data.artist.items[0].id);
+					console.log(data.artists.items[0].id);
+					
+					musica["artista"] = data.artists.items[0].name;
+					$.get("https://api.spotify.com/v1/artists/"+data.artists.items[0].id+"/top-tracks",{country:"BR"}, function(tracks){
+						console.log(tracks);
+						musica["track"] = tracks.tracks[0].name;
+						musica["imagem"] = tracks.tracks[0].album.images[0].url;
+						musica["preview"] = tracks.tracks[0].preview_url;
+						
+						console.log(musica);
+						dismiss();
+						spotify(musica);
+					});
+					
 				});
+				
 			}
 		};
 
@@ -165,5 +213,30 @@ $(function(){
 	
 	$("button.mic").click(function(){
 		annyang.start();
+	});
+	
+	$("button.play-pause").click(function(){
+		var player = document.getElementById('player');
+		if(player.paused){
+			player.play();
+		}else{
+			player.pause();
+		}
+	});
+	
+	$("audio").on("play", function(){
+		$("button.play-pause i").removeClass("fa-play").addClass("fa-pause");
+	});
+	
+	$("audio").on("pause", function(){
+		$("button.play-pause i").removeClass("fa-pause").addClass("fa-play");
+	});
+	
+	$("button.cancel").click(function(){
+		span = jQuery("<span></span>").addClass("placeholder").text("Clique no botão abaixo e diga algo legal");
+		$("div.speech").html(span);
+		$("button.mic, div.speech").delay(1500).removeClass("dismiss");
+		$("button.cancel, div.spotify").removeClass("show");
+		$("audio").trigger("pause");
 	});
 });

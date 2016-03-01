@@ -549,7 +549,33 @@ section{
 	section.tagger{
 		
 	}
+		
+		section.tagger button.cancel{
+			background: transparent;
+			border-radius: 100%;
+			border: none;
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			top: -100%;
+			outline: none;
+			color: #fff;
+			transition: all 1s;
+		}
+	
+			section.tagger button.cancel.show{
+				top: 20px;
+				transition: all 1s;
+			}
 
+			section.tagger button.cancel:hover{
+				cursor: pointer;
+				transition: background 1s;
+				background: rgba(255,255,255,0.5);
+			}
+	
 		section.tagger div.speech{
 			position: absolute;
 			top: 50%;
@@ -562,6 +588,10 @@ section{
 
 			section.tagger.current div.speech{
 				opacity: 1;
+			}
+
+			section.tagger div.speech.dismiss{
+				opacity: 0;
 			}
 
 			section.tagger div.speech span.placeholder{
@@ -593,6 +623,10 @@ section{
 			
 		}
 
+			section.tagger.current button.mic.dismiss{
+				bottom: -100px;
+			}
+
 			section.tagger button.mic:hover{
 				cursor: pointer;
 				transition: background 1s;
@@ -603,15 +637,36 @@ section{
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-			bottom: 10px;
 			font-family: Open Sans;
 			color: #fff;
-			display: none;
+			display: block;
+			bottom: -100%;
+			transition: all 1s;
 		}
 
-			section.tagger div.spotify span.spotify-title{
-				display: block;
+			section.tagger div.spotify.show{
+				bottom: 10px;
+			}
+
+			section.tagger div.spotify div.header{
 				text-align: center;
+				opacity: 0;
+				
+				transition: all 1s 1s;
+			}
+
+				section.tagger div.spotify.show div.header{
+					opacity: 1;
+					
+				}
+
+			section.tagger div.spotify span.spotify-title{
+				display: inline-block;
+				text-align: center;
+				line-height: 30px;
+				border-bottom: 1px solid;
+				width: 120px;
+				margin-bottom: 7px;
 			}
 
 				section.tagger div.spotify span.spotify-title i.fa-spotify{
@@ -621,17 +676,22 @@ section{
 			section.tagger div.spotify span.artist{
 				display: block;
 				text-align: center;
+				font-family: Open Sans Light;
 			}
 
 			section.tagger div.spotify span.track{
 				display: block;
 				text-align: center;
+				font-family: Open Sans Light;
+				margin-bottom: 5px;
 			}
 
 			section.tagger div.spotify div.album-cover{
 				width: 300px;
 				height: 300px;
 				background-color: red;
+				background-position: center;
+				background-size: contain;
 			}
 
 			section.tagger div.spotify div.controles{
@@ -639,7 +699,14 @@ section{
 				align-content: center;
 				justify-content: center;
 				padding-top: 10px;
+				opacity: 0;
+				transition: all 1s 1s;
 			}
+
+				section.tagger div.spotify.show div.controles{
+					opacity: 1;
+					transition: all 1s 1s;
+				}
 
 				section.tagger div.spotify div.controles button.play-pause{
 					width: 50px;
@@ -668,6 +735,10 @@ section{
 
 				section.tagger div.spotify div.controles button.forward{
 				
+				}
+
+				section.tagger div.spotify audio{
+					display: none;
 				}
 
 

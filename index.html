@@ -133,6 +133,7 @@
 		</section>
 		
 		<section class="tagger next">
+			<button class="cancel"><i class="fa fa-times fa-2x"></i></button>
 			<div class="speech">
 				<span class="placeholder">
 					Clique no botão abaixo e diga algo legal</span>
@@ -140,9 +141,11 @@
 			<button class="mic"><i class="fa fa-microphone fa-2x"></i></button>
 			
 			<div class="spotify">
-				<span class="spotify-title"><i class="fa fa-spotify"></i> Spotify</span>
-				<span class="artist">The Beatles</span>
-				<span class="track">Hey Jude</span>
+				<div class="header">
+					<span class="spotify-title"><i class="fa fa-spotify"></i> Spotify</span>
+					<span class="artist">The Beatles</span>
+					<span class="track">Hey Jude</span>
+				</div>
 				<div class="album-cover"></div>
 				<div class="controles">
 					<button class="back">
@@ -154,6 +157,7 @@
 						<i class="fa fa-step-forward fa-2x"></i>
 					</button>
 				</div>
+				<audio preload="auto" id="player"></audio>
 			</div>
 			<div class="next" data-execute="changeColor" data-end></div>
 		</section>

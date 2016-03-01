@@ -151,6 +151,10 @@ $(function(){
 			
 			'(quero) ouvir *tag': function(artista){
 				alert(artista);
+				$.get("https://api.spotify.com/v1/search",{q: artista, type:"artist"}, function(data){
+					data = JSON.parse(data);
+					console.log(data);
+				}
 			}
 		};
 

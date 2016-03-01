@@ -42,6 +42,7 @@ section{
 	position: absolute;
 	left: 50%;
 	top: 50%;
+	/*transform: translateX(-50%) translateY(-50%) scale(1.5);*/
 	transform: translateX(-50%) translateY(-50%);
 	width: 800px;
 	height: 600px;
@@ -301,18 +302,33 @@ section{
 				transition: all 1s;
 			}
 
-		section.fonetica div, 									section.pragmatica div,
-		section.semantica div,
-		section.morfologica div,
-		section.sintatica div{
+		section.fonetica > div,
+		section.pragmatica > div,
+		section.semantica > div,
+		section.morfologica > div,
+		section.sintatica > div{
 			position: absolute;
 			left: 50%;
 			top: 50%;
+			width: 600px;
+			text-align: center;
 			transform: translateX(-50%) translateY(-50%);
 			
 			opacity: 0;
+			font-size: 30px;
 			
 		}
+
+			section.sintatica > div > div{
+				display: inline-block;
+				padding: 3px 4px;
+				border-radius: 4px;
+				margin-top: 5px;
+			}
+
+				section.sintatica > div.current > div{
+					background-color: grey;
+				}
 
 			section.fonetica.current div,
 			section.pragmatica.current div,
@@ -346,8 +362,9 @@ section{
 				transform: translateY(-20px);
 				color: #fff;
 				font-family: Open Sans Light;
+				font-size: 30px;
 				
-				transition: all 1s;
+				/*transition: all 1s;*/
 			}
 
 			section.current span.pos-1, 
@@ -412,47 +429,247 @@ section{
 		section div.current span.adjunto-adverbial{
 			padding: 0px 7px;
 			border-radius: 4px;
+			margin-left: 5px;
+			
+			transition-property: all;
+			transition-duration: 1s;
+			transition-delay: 0s;
+			position: relative;
 			
 		}
 
-		section div.current span.artigo{
-			background-color: red;
-		}
+			section div.current span.predicado-verbal{
+				height: 2em;
+			}
 
-		section div.current span.substantivo{
-			background-color: green;
-		}
-
-		section div.current span.verbo{
-			background-color: blue;
-		}
-
+		section div.current span.artigo,
+		section div.current span.substantivo,
+		section div.current span.verbo,
 		section div.current span.adjetivo{
-			background-color: grey;
+			background-color: #EF9A9A;
+		}
+
+		section div span.artigo::after,
+		section div span.substantivo::after,
+		section div span.verbo::after,
+		section div span.adjetivo::after{
+			content: attr(data-class);
+			color: #fff;
+			position: absolute;
+			top: -30px;
+			font-size: 18px;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0;
+			
+			transition: all 1s;
+		}
+
+		section div.current span.artigo::after,
+		section div.current span.substantivo::after,
+		section div.current span.verbo::after,
+		section div.current span.adjetivo::after{
+			opacity: 1;
 		}
 
 
 		section div.current span.sujeito-composto{
-			background-color: ;
+			background-color: #F48FB1;
 		}
 
-		section div.current span.predicado-verbal{
-			background-color: ;
+		section div.current div.predicado-verbal{
+			background-color: #F48FB1;
 		}
 
 		section div.current span.objeto-indireto{
-			background-color: ;
+			background-color: #E91E63;
 		}
 
 		section div.current span.adjunto-adverbial{
-			background-color: ;
+			background-color: #E91E63;
+		}
+
+		section span.sujeito-composto::after,
+		section span.predicado::after,
+		section div div span.objeto-indireto::after,
+		section div div span.adjunto-adverbial::after{
+			content: attr(data-class);
+			color: #fff;
+			position: absolute;
+			bottom: -30px;
+			font-size: 18px;
+			font-family: Open Sans Light;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0;
+			white-space: nowrap;
+			
+			transition: all 1s;
+			
+		}
+
+		section div div.predicado-verbal::after{
+			left: 30px;
+		}
+
+		section span.sujeito-composto::after{
+			top: -30px;
+		}
+
+		section div.current span.sujeito-composto::after,
+		section div.current span.predicado::after,
+		section div.current div span.objeto-indireto::after,
+		section div.current div span.adjunto-adverbial::after{
+			opacity: 1;
+			
 		}
 
 		
 		section div.current span.diferente{
 			transition-delay: 0s;
-			opacity: 0.5;
-			color: #bdc3c7;
+			position: relative;
 		}
+
+			section div.current span.diferente::after{
+				width: 100%;
+				transition: all 1s;
+			}
+
+			section div span.diferente::after{
+				content: "";
+				width: 0px;
+				height: 4px;
+				position: absolute;
+				background: #fff;
+				bottom: -2px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+	section.tagger{
+		
+	}
+
+		section.tagger div.speech{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			text-align: center;
+			opacity: 0;
+			transition: all 1s;
+		}
+
+			section.tagger.current div.speech{
+				opacity: 1;
+			}
+
+			section.tagger div.speech span.placeholder{
+				font-family: Open Sans Light;
+				font-size: 23px;
+				color: #fff;
+				opacity: 0.7;
+				
+			}
+
+		section.tagger button.mic{
+			background: transparent;
+			border-radius: 100%;
+			border: none;
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: -100px;
+			outline: none;
+			color: #fff;
+			transition: all 1s;
+		}
+
+		section.tagger.current button.mic{
+			
+			bottom: 10px;
+			
+		}
+
+			section.tagger button.mic:hover{
+				cursor: pointer;
+				transition: background 1s;
+				background: rgba(255,255,255,0.5);
+			}
+
+		section.tagger div.spotify{
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 10px;
+			font-family: Open Sans;
+			color: #fff;
+			display: none;
+		}
+
+			section.tagger div.spotify span.spotify-title{
+				display: block;
+				text-align: center;
+			}
+
+				section.tagger div.spotify span.spotify-title i.fa-spotify{
+					/*color: #84bd00;*/
+				}
+
+			section.tagger div.spotify span.artist{
+				display: block;
+				text-align: center;
+			}
+
+			section.tagger div.spotify span.track{
+				display: block;
+				text-align: center;
+			}
+
+			section.tagger div.spotify div.album-cover{
+				width: 300px;
+				height: 300px;
+				background-color: red;
+			}
+
+			section.tagger div.spotify div.controles{
+				display: flex;
+				align-content: center;
+				justify-content: center;
+				padding-top: 10px;
+			}
+
+				section.tagger div.spotify div.controles button.play-pause{
+					width: 50px;
+					height: 50px;
+					border-radius: 100%;
+					margin: 0px 15px;
+					outline: none;
+					background: transparent;
+					border-color: #fff;
+					border: 1px solid;
+					color: #fff;
+					
+				}
+		
+				section.tagger div.spotify div.controles button.back,
+				section.tagger div.spotify div.controles button.forward{
+					background: transparent;
+					border: none;
+					outline: none;
+					color: #fff;
+				}
+
+				section.tagger div.spotify div.controles button.back{
+					
+				}
+
+				section.tagger div.spotify div.controles button.forward{
+				
+				}
+
+
 
 			

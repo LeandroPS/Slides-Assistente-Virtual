@@ -7,12 +7,14 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="CSS/animate.css">
+		<link rel="stylesheet" href="CSS/font-awesome-4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="CSS/style.css">
 		<script src="JS/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.2.1/annyang.min.js"></script>
 		<script src="JS/js.js"></script>
 	</head>
 	<body>
-		<!--
+		
 		<section class="title show">
 			<h1 class="next">A arquiteura de uma Assistente Virtual Modular</h1>
 			<div class="author next">
@@ -63,15 +65,14 @@
 			</ul>
 			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
-		-->
 		<section class="morfologica next">
 			<h1>Análise Morfológica</h1>
 			
 			<div class="next">
-				<span class="artigo pos-1">A</span> 
-				<span class="substantivo pos-2">manhã</span> 
-				<span class="verbo pos-3">está</span> 
-				<span class="adjetivo pos-4">ensolarada</span>
+				<span class="artigo pos-1" data-class="artigo">A</span> 
+				<span class="substantivo pos-2" data-class="substantivo">manhã</span> 
+				<span class="verbo pos-3" data-class="verbo">está</span> 
+				<span class="adjetivo pos-4" data-class="adjetivo">ensolarada</span>
 			</div>
 			
 			<div class="next" data-execute="changeColor" data-end></div>
@@ -79,38 +80,24 @@
 		<section class="sintatica next">
 			<h1>Análise Sintática</h1>
 			
-			<div>
-				<span class="sujeito-composto">
+			<div class="next">
+				<span class="sujeito-composto" data-class="Sujeito Composto">
 					<span class="pos-1">Marcos</span> 
 					<span class="pos-2">e</span> 
-					<span class="pos-3">Paulo</span>
-				</span> 
-				<span class="predicado-verbal">
-					<span class="pos-4">gostam</span> 
-					<span class="objeto-indireto">
+					<span class="pos-3">Paulo</span>					</span>
+				<br/>
+				<div class="predicado-verbal">
+					<span class="pos-4 predicado" data-class="Predicado Verbal">gostam</span> 
+					<span class="objeto-indireto" data-class="Objeto Indireto">
 						<span class="pos-5">de</span> 
 						<span class="pos-6">estudar</span>
-					</span> 
-					<span class="adjunto-adverbial">
+					</span>
+					<span class="adjunto-adverbial" data-class="Adjunto Adverbial">
 						<span class="pos-7">todos</span> 
 						<span class="pos-8">os</span> 
 						<span class="pos-9">dias</span>
 					</span>
-				</span>
-			</div>
-			
-			<div class="next" data-execute="changeColor" data-end></div>
-		</section>
-		<section class="fonetica next">
-			<h1>Análise Fonética</h1>
-			
-			<div>
-				<span class="pos-1">-</span> 
-				<span class="pos-2">Você</span> 
-				<span class="pos-3">sabe</span> 
-				<span class="pos-4">que</span> 
-				<span class="pos-5">horas</span> 
-				<span class="pos-6">são?</span>
+				</div>
 			</div>
 			
 			<div class="next" data-execute="changeColor" data-end></div>
@@ -121,14 +108,14 @@
 			<div class="next">
 				<span class="pos-1">O</span> 
 				<span class="pos-2">senhor</span> 
-				<span class="pos-3">sentou</span> 
-				<span class="pos-4">se</span> 
-				<span class="pos-5">no</span> 
-				<span class="diferente pos-6">banco</span>
+				<span class="pos-3">sentou-se</span> 
+				<span class="pos-4">no</span> 
+				<span class="diferente pos-5">banco</span>
 			</div>
 			
 			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
+
 		<section class="pragmatica next">
 			<h1>Análise Pragmática</h1>
 			
@@ -141,6 +128,32 @@
 				<span class="pos-6">são?</span>
 			</div>
 			
+			<div class="next" data-execute="changeColor" data-end></div>
+		</section>
+		
+		<section class="tagger next">
+			<div class="speech">
+				<span class="placeholder">
+					Clique no botão abaixo e diga algo legal</span>
+			</div>
+			<button class="mic"><i class="fa fa-microphone fa-2x"></i></button>
+			
+			<div class="spotify">
+				<span class="spotify-title"><i class="fa fa-spotify"></i> Spotify</span>
+				<span class="artist">The Beatles</span>
+				<span class="track">Hey Jude</span>
+				<div class="album-cover"></div>
+				<div class="controles">
+					<button class="back">
+						<i class="fa fa-step-backward fa-2x"></i>
+					</button>
+					<button class="play-pause">
+						<i class="fa fa-play fa-2x"></i></button>
+					<button class="forward">
+						<i class="fa fa-step-forward fa-2x"></i>
+					</button>
+				</div>
+			</div>
 			<div class="next" data-execute="changeColor" data-end></div>
 		</section>
 		

@@ -209,7 +209,11 @@ $(function(){
 					
 				});
 				
+			},
+			'diga *tag': function(diga) { 
+				responsiveVoice.speak(diga, "Brazilian Portuguese Female");
 			}
+			
 		};
 
 		// Add our commands to annyang

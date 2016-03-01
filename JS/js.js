@@ -135,10 +135,13 @@ $(function(){
 	if (annyang) {
 	  // Let's define a command.	
 		annyang.setLanguage("pt-BR");
-		recognition.language("pt-BR");
+		
+		annyang.addCallback("result", function(said){
+			console.log(said);	
+		});
 		
 		var commands = {
-			'olá': 
+			'olá todo mundo': 
 				function() { 
 					alert('olá brasil!'); 
 				},

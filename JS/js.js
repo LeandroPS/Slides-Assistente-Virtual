@@ -168,8 +168,11 @@ $(function(){
 		annyang.setLanguage("pt-BR");
 		
 		annyang.addCallback("result", function(said){
-			console.log(said);	
+			console.log(said);
+			$("span.placeholder").text(said[0]);
 		});
+		
+		annyang.getSpeechRecognizer();
 		
 		var commands = {
 			'olá todo mundo': 
@@ -199,7 +202,9 @@ $(function(){
 						
 						console.log(musica);
 						dismiss();
-						spotify(musica);
+						setTimeout(function(){
+							spotify(musica);
+						}, 1000);
 					});
 					
 				});

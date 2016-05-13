@@ -741,6 +741,36 @@ section{
 					display: none;
 				}
 
+		section.tagger div.youtube{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(0px);
+			opacity: 0;
+			transition: all 1s;
+			
+			display: none;
+			
+		}
+
+			section.tagger div.youtube.show{
+				display: block;
+				opacity: 1;
+				transform: translateX(-50%) translateY(-50%);
+				transition: all 1s;
+			}
+
+			section.tagger div.youtube span.marca{
+				display: block;
+				font-family: Open Sans;
+				color: #fff;
+				margin-bottom: 5px;
+			}
+
+			section.tagger div.youtube iframe{
+				background-color: #000;
+			}
+
 
 
 			

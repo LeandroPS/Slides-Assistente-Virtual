@@ -115,8 +115,8 @@ function next(){
 }
 
 var cores = ["#8e44ad", "#e67e22", "#2ecc71", "#e74c3c", "#3498db", "#F44336", "#E91E63", "#3F51B5", "#00BCD4", "#607D8B"];
-//var i = 0;
-var i = 8;
+var i = 0;
+//var i = 8;
 
 function changeColor(){
 	$("body").css("background", cores[i]);
@@ -129,29 +129,27 @@ function dismiss(){
 }
 
 function spotify(musica){
-	/*
-	<div class="spotify">
-				<span class="spotify-title"><i class="fa fa-spotify"></i> Spotify</span>
-				<span class="artist">The Beatles</span>
-				<span class="track">Hey Jude</span>
-				<div class="album-cover"></div>
-				<div class="controles">
-					<button class="back">
-						<i class="fa fa-step-backward fa-2x"></i>
-					</button>
-					<button class="play-pause">
-						<i class="fa fa-play fa-2x"></i></button>
-					<button class="forward">
-						<i class="fa fa-step-forward fa-2x"></i>
-					</button>
-				</div>
-			</div>
-	*/
+
 	$("div.album-cover").css("background-image","url("+musica["imagem"]+")");
 	$("span.artist").text(musica["artista"]);
 	$("span.track").text(musica["track"]);
 	$("div.spotify").addClass("show");
 	$("audio").attr("src", musica["preview"]).trigger("play");
+}
+
+function youtube(video){
+	console.log("teste");
+	$("div.youtube iframe").remove();
+iframe = jQuery("<iframe></iframe>").attr("id","ytplayer").attr("type", "text/html").attr("width", "640").attr("height", "390").attr("src", "http://www.youtube.com/embed/"+video["id"]+"?autoplay=1").attr("frameborder","0").addClass("player");
+	$("div.youtube").append(iframe);
+	
+	/*
+		<iframe id="ytplayer" type="text/html" width="640" height="390"
+  src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+  frameborder="0"/>
+	*/
+	
+	$("div.youtube").addClass("show");
 }
 
 $(function(){
@@ -212,8 +210,19 @@ $(function(){
 			},
 			'diga *tag': function(diga) { 
 				responsiveVoice.speak(diga, "Brazilian Portuguese Female");
+			},
+			'(quero) ver *tag': function(video) { 
+				chave = "AIzaSyCogApDMQWoGiYzgACToVje8pmh0vfSdQU";
+				$.get("https://www.googleapis.com/youtube/v3/search",{q: video, part: "snippet",type:"video", key: chave}, function(data){
+					console.log(data);
+					video = [];
+					video["id"] = data.items[0].id.videoId;
+					video["name"] = data.items[0].snippet.title;
+					console.log(video);
+					youtube(video);
+				});
+				dismiss();
 			}
-			
 		};
 
 		// Add our commands to annyang
@@ -246,6 +255,10 @@ $(function(){
 		$("div.speech").html(span);
 		$("button.mic, div.speech").delay(1500).removeClass("dismiss");
 		$("button.cancel, div.spotify").removeClass("show");
+		$("div.youtube").removeClass("show");
+		setTimeout(function(){
+			$("div.youtube iframe").remove();
+		}, 1000);
 		$("audio").trigger("pause");
 	});
 });
